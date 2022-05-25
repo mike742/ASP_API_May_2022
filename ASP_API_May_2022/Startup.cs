@@ -1,4 +1,6 @@
 using ASP_API_May_2022.Data;
+using ASP_API_May_2022.Data.Interfaces;
+using ASP_API_May_2022.Data.SqlRepos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,7 +35,7 @@ namespace ASP_API_May_2022
                 op.UseMySql(cs, ServerVersion.AutoDetect(cs));
             });
 
-            // services.AddScoped<IVendorRepo, VendorSqlRepo>();
+            services.AddScoped<IProductRepo, ProductSqlRepo>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
