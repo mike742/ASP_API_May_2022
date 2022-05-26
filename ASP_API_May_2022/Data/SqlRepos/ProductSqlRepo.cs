@@ -15,6 +15,25 @@ namespace ASP_API_May_2022.Data.SqlRepos
         {
             _context = context;
         }
+
+        public void Create(ProductCreateDto input)
+        {
+            _context.Products.Add( _mapper.Map(input) );
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var res = _context.Products
+                    .FirstOrDefault(p => p.Id == id);
+
+            if (res != null)
+            {
+                _context.Remove(res);
+                _context.SaveChanges();
+            }
+        }
+
         public List<ProductReadDto> GetAll()
         {
             return _context.Products
@@ -32,6 +51,20 @@ namespace ASP_API_May_2022.Data.SqlRepos
                 return _mapper.Map(res);
             }
             return null;
+        }
+
+        public void Update(int id, ProductCreateDto input)
+        {
+            var res = _context.Products
+                .FirstOrDefault(p => p.Id == id);
+
+            if (res != null)
+            {
+                res.Name = input.Name;
+                res.Price = input.Price;
+
+                _context.SaveChanges();
+            }
         }
     }
 }

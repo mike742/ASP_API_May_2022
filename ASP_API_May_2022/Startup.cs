@@ -36,6 +36,7 @@ namespace ASP_API_May_2022
             });
 
             services.AddScoped<IProductRepo, ProductSqlRepo>();
+            services.AddScoped<IOrdersRepo, OrderSqlRepo>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

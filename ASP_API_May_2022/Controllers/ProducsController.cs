@@ -44,18 +44,21 @@ namespace ASP_API_May_2022.Controllers
         [HttpPost]
         public void Post([FromBody] ProductCreateDto value)
         {
+            _productRepo.Create(value);
         }
 
         // PUT api/<ProducsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] ProductCreateDto value)
         {
+            _productRepo.Update(id, value);
         }
 
         // DELETE api/<ProducsController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _productRepo.Delete(id);
         }
     }
 }
