@@ -32,7 +32,9 @@ namespace ASP_API_May_2022.Data.SqlRepos
                     if (op.OrderId == order.Id)
                     {
                         ProductReadDto prod =
-                            _mapper.Map( products.FirstOrDefault(p => p.Id == op.Id));
+                            _mapper.Map( 
+                                products.FirstOrDefault(p => p.Id == op.ProductId)
+                                );
                         productToAdd.Add(prod);
                     }
                 }
